@@ -59,6 +59,7 @@ public class FormnAlquiler extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtKminicial = new javax.swing.JTextField();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,9 +90,27 @@ public class FormnAlquiler extends javax.swing.JFrame {
 
         jLabel6.setText("KM inicial");
 
+        txtPlacaBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPlacaBuscarActionPerformed(evt);
+            }
+        });
+        txtPlacaBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPlacaBuscarKeyTyped(evt);
+            }
+        });
+
         jLabel7.setText("KM final");
 
         jLabel1.setText("Nombre");
+
+        btnVolver.setText("Volver al registro");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,8 +146,9 @@ public class FormnAlquiler extends javax.swing.JFrame {
                                 .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addComponent(jLabel3)
-                    .addComponent(jLabel6))
-                .addContainerGap(125, Short.MAX_VALUE))
+                    .addComponent(jLabel6)
+                    .addComponent(btnVolver))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +191,9 @@ public class FormnAlquiler extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(btnVolver)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,12 +272,28 @@ public class FormnAlquiler extends javax.swing.JFrame {
 
         txtTotal.setText("S/. " + String.format("%.2f", a.getCostoTotal()));
         arregloAlquileres.agregarAlquiler(a);
-    
 
 
     }//GEN-LAST:event_btnCalcularActionPerformed
 
-public static void main(String args[]) {
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        FormnAuto formAuto = new FormnAuto(arregloAutos);
+        formAuto.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void txtPlacaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPlacaBuscarActionPerformed
+
+    private void txtPlacaBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaBuscarKeyTyped
+        if (txtPlacaBuscar.getText().length() >= 7) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPlacaBuscarKeyTyped
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 ArregloAuto arreglo = new ArregloAuto();
@@ -267,6 +305,7 @@ public static void main(String args[]) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
