@@ -20,7 +20,7 @@ public class ArregloAuto {
     public boolean agregarAuto(Auto nuevoAuto) {
 
         if (getCantidad() >= MAXIMO) {
-            System.out.println("Error: No hay espacio para más autos");
+            System.out.println("Error: No hay espacio para másD autos");
             return false;
         }
 

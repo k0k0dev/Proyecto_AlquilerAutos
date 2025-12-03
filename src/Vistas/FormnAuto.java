@@ -90,7 +90,7 @@ public class FormnAuto extends javax.swing.JFrame {
         });
 
         lblRegistrAuto.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        lblRegistrAuto.setText("               REGISTRA TU AUTO");
+        lblRegistrAuto.setText("          REGISTRA TU AUTO");
 
         lblImagenAuto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/coche.png"))); // NOI18N
 
@@ -127,14 +127,14 @@ public class FormnAuto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblRegistrAuto)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(lblRegistrAuto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlaca)
                     .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
