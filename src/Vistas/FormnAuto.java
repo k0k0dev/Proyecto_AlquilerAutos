@@ -4,16 +4,29 @@ import javax.swing.JOptionPane;
 import arregloauto.ArregloAuto;
 import auto.Auto;
 
-
 public class FormnAuto extends javax.swing.JFrame {
-    
-private ArregloAuto arregloAutos;
+
+    private ArregloAuto arregloAutos;
+
     public FormnAuto() {
         initComponents();
         arregloAutos = new ArregloAuto();
-        this.setLocationRelativeTo(null); 
+        this.setLocationRelativeTo(null);
     }
-   
+
+    public FormnAuto(ArregloAuto arregloAutosExistente) {
+        initComponents();
+        this.arregloAutos = arregloAutosExistente; 
+        this.setLocationRelativeTo(null);
+        txtPlaca.setColumns(7); 
+
+        JOptionPane.showMessageDialog(this,
+                "Bienvenido al registro de autos\n"
+                + "Autos registrados: " + arregloAutos.getCantidad(),
+                "Información",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,6 +52,17 @@ private ArregloAuto arregloAutos;
         lblMarca.setText("Marca:");
 
         lblTipo.setText("Tipo: ");
+
+        txtPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPlacaActionPerformed(evt);
+            }
+        });
+        txtPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPlacaKeyTyped(evt);
+            }
+        });
 
         cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Camioneta", "Minivan" }));
 
@@ -124,60 +148,67 @@ private ArregloAuto arregloAutos;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-            
+
         String placa = txtPlaca.getText();
         String modelo = txtModelo.getText();
         String marca = txtMarca.getText();
         String tipo = cboTipo.getSelectedItem().toString();
-        
-        
+
         if (placa.isEmpty() || modelo.isEmpty() || marca.isEmpty()) {
-            JOptionPane.showMessageDialog(this, 
-                "Todos los campos son obligatorios", 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos son obligatorios",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        
+
         Auto auto = new Auto(placa, modelo, marca, tipo);
-        
-        
+
         boolean agregado = arregloAutos.agregarAuto(auto);
-        
+
         if (agregado) {
-            JOptionPane.showMessageDialog(this, 
-                "Auto registrado correctamente\n" +
-                "Total de autos: " + arregloAutos.getCantidad(),
-                "Éxito", 
-                JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Auto registrado correctamente\n"
+                    + "Total de autos: " + arregloAutos.getCantidad(),
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
         } else {
-            JOptionPane.showMessageDialog(this, 
-                "No se pudo registrar el auto\n" +
-                "La placa ya existe o no hay espacio",
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
-        
+            JOptionPane.showMessageDialog(this,
+                    "No se pudo registrar el auto\n"
+                    + "La placa ya existe o no hay espacio",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+
     }//GEN-LAST:event_btnGuardarActionPerformed
     }
     private void btnAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlquilerActionPerformed
-            
+
         FormnAlquiler formAlquiler = new FormnAlquiler(arregloAutos);
         formAlquiler.setVisible(true);
-        this.dispose(); 
-
+        this.setVisible(false);
     }//GEN-LAST:event_btnAlquilerActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-     limpiarCampos();
+        limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-private void limpiarCampos() {
+
+    private void txtPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaActionPerformed
+
+    }//GEN-LAST:event_txtPlacaActionPerformed
+
+    private void txtPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaKeyTyped
+        if (txtPlaca.getText().length() >= 7) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPlacaKeyTyped
+    private void limpiarCampos() {
         txtPlaca.setText("");
         txtModelo.setText("");
         txtMarca.setText("");
         cboTipo.setSelectedIndex(0);
     }
+
     /**
      * @param args the command line arguments
      */
