@@ -5,6 +5,7 @@ import auto.Alquiler;
 import arregloauto.ArregloAuto;
 import arregloauto.ArregloAlquiler;
 import javax.swing.JOptionPane;
+import auto.resultadoCreacion;
 
 public class FormnAlquiler extends javax.swing.JFrame {
 
@@ -268,38 +269,36 @@ public class FormnAlquiler extends javax.swing.JFrame {
             return;
         }
 
-        if (txtNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese nombre", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        String nombre = txtNombre.getText();
+        String placa = autoEncontrado.getPlaca();
+        String kmInicialStr = txtKminicial.getText();
+        String kmFinalStr = txtKmfinal.getText();
 
-        String km1 = txtKminicial.getText();
-        String km2 = txtKmfinal.getText();
-
-        // Verificar que sean solo números y puntos
-        if (!km1.matches("[0-9.]+") || !km2.matches("[0-9.]+")) {
-            JOptionPane.showMessageDialog(this, "Km deben ser números", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        double k1 = Double.parseDouble(km1);
-        double k2 = Double.parseDouble(km2);
-
-        if (k2 <= k1) {
-            JOptionPane.showMessageDialog(this, "Km final mayor", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        Alquiler a = Alquiler.crearAlquilerValido(
-                txtNombre.getText(),
-                autoEncontrado.getPlaca(),
-                autoEncontrado.getTipo(),
-                k1,
-                k2
+        resultadoCreacion resultado = Alquiler.crearAlquilerValido(
+                nombre, placa, autoEncontrado, kmInicialStr, kmFinalStr
         );
 
-        if (a == null) {
-            JOptionPane.showMessageDialog(this, "Datos inválidos para crear el alquiler", "Error", JOptionPane.ERROR_MESSAGE);
+        if (resultado.isExito()) {
+            Alquiler alquiler = resultado.getAlquiler();
+            txtTotal.setText("S/. " + String.format("%.2f", alquiler.getCostoTotal()));
+            arregloAlquileres.agregarAlquiler(alquiler);
 
+            JOptionPane.showMessageDialog(this,
+                    "✓ Alquiler registrado exitosamente\n"
+                    + "Cliente: " + nombre + "\n"
+                    + "Costo: S/. " + String.format("%.2f", alquiler.getCostoTotal()),
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            txtKminicial.setText("");
+            txtKmfinal.setText("");
+            txtTotal.setText("");
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    resultado.getMenError(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -313,7 +312,7 @@ public class FormnAlquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtPlacaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacaBuscarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtPlacaBuscarActionPerformed
 
     private void txtPlacaBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaBuscarKeyTyped
