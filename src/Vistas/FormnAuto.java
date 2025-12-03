@@ -42,6 +42,8 @@ public class FormnAuto extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnAlquiler = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        lblRegistrAuto = new javax.swing.JLabel();
+        lblImagenAuto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +89,11 @@ public class FormnAuto extends javax.swing.JFrame {
             }
         });
 
+        lblRegistrAuto.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        lblRegistrAuto.setText("               REGISTRA TU AUTO");
+
+        lblImagenAuto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/coche.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,32 +101,40 @@ public class FormnAuto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblImagenAuto)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblPlaca)
+                                        .addComponent(lblModelo)
+                                        .addComponent(lblMarca)
+                                        .addComponent(lblTipo))
+                                    .addGap(72, 72, 72)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtPlaca)
+                                        .addComponent(txtModelo)
+                                        .addComponent(txtMarca)
+                                        .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPlaca)
-                                    .addComponent(lblModelo)
-                                    .addComponent(lblMarca)
-                                    .addComponent(lblTipo))
-                                .addGap(72, 72, 72)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPlaca)
-                                    .addComponent(txtModelo)
-                                    .addComponent(txtMarca)
-                                    .addComponent(cboTipo, 0, 150, Short.MAX_VALUE)))
-                            .addComponent(btnAlquiler)))
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAlquiler)
+                                    .addComponent(btnGuardar))
+                                .addGap(45, 45, 45)
+                                .addComponent(btnLimpiar))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(btnGuardar)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnLimpiar)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(lblRegistrAuto)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(lblRegistrAuto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlaca)
                     .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,9 +154,13 @@ public class FormnAuto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnLimpiar))
-                .addGap(47, 47, 47)
-                .addComponent(btnAlquiler)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblImagenAuto))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btnAlquiler))))
         );
 
         pack();
@@ -249,9 +268,11 @@ public class FormnAuto extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cboTipo;
+    private javax.swing.JLabel lblImagenAuto;
     private javax.swing.JLabel lblMarca;
     private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblRegistrAuto;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
