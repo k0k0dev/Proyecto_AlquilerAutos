@@ -16,13 +16,14 @@ public class FormnAuto extends javax.swing.JFrame {
 
     public FormnAuto(ArregloAuto arregloAutosExistente) {
         initComponents();
-        this.arregloAutos = arregloAutosExistente; 
+        this.arregloAutos = arregloAutosExistente;
         this.setLocationRelativeTo(null);
-        txtPlaca.setColumns(7); 
+        txtPlaca.setColumns(7);
 
         JOptionPane.showMessageDialog(this,
-                "Bienvenido al registro de autos\n"
-                + "Autos registrados: " + arregloAutos.getCantidad(),
+                """
+                Bienvenido al registro de autos
+                Autos registrados: """ + arregloAutos.getCantidad(),
                 "Información",
                 JOptionPane.INFORMATION_MESSAGE);
     }
@@ -187,15 +188,16 @@ public class FormnAuto extends javax.swing.JFrame {
 
         if (agregado) {
             JOptionPane.showMessageDialog(this,
-                    "Auto registrado correctamente\n"
-                    + "Total de autos: " + arregloAutos.getCantidad(),
+                    """
+                    Auto registrado correctamente
+                    Total de autos: """ + arregloAutos.getCantidad(),
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "No se pudo registrar el auto\n"
-                    + "La placa ya existe o no hay espacio",
+            JOptionPane.showMessageDialog(this, """
+                                                No se pudo registrar el auto
+                                                La placa ya existe o no hay espacio""",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
 

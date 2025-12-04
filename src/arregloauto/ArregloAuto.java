@@ -2,12 +2,14 @@ package arregloauto;
 
 import auto.Auto;
 
-public class ArregloAuto {
+public final class ArregloAuto {
 
-    private Auto[] autos;
+    // 1. ATRIBUTOS PRIVADOS (instancia y clase)
+    private final Auto[] autos;
     private int cantidad;
     private static final int MAXIMO = 100;
 
+    // 2. CONSTRUCTOR
     public ArregloAuto() {
         autos = new Auto[MAXIMO];
         cantidad = 0;
@@ -17,10 +19,16 @@ public class ArregloAuto {
         agregarAuto(new Auto("GHI-789", "Grand Caravan 2019", "Dodge", "Minivan"));
     }
 
+    // 3. GETTERS
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    // 4. MÉTODOS DE ACCESO/OPERACIONES
     public boolean agregarAuto(Auto nuevoAuto) {
 
         if (getCantidad() >= MAXIMO) {
-            System.out.println("Error: No hay espacio para másD autos");
+            System.out.println("Error: No hay espacio para más autos");
             return false;
         }
 
@@ -41,10 +49,6 @@ public class ArregloAuto {
             }
         }
         return null;
-    }
-
-    public int getCantidad() {
-        return cantidad;
     }
 
 }

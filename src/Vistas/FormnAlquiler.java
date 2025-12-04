@@ -9,8 +9,8 @@ import auto.resultadoCreacion;
 
 public class FormnAlquiler extends javax.swing.JFrame {
 
-    private ArregloAuto arregloAutos;
-    private ArregloAlquiler arregloAlquileres;
+    private final ArregloAuto arregloAutos;
+    private final ArregloAlquiler arregloAlquileres;
     private Auto autoEncontrado;
 
     public FormnAlquiler(ArregloAuto arregloAutos) {
@@ -229,7 +229,8 @@ public class FormnAlquiler extends javax.swing.JFrame {
         String placa = txtPlacaBuscar.getText().trim();
 
         if (placa.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
+           
+           JOptionPane.showMessageDialog(this,
                     "Ingrese una placa para buscar",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -253,8 +254,9 @@ public class FormnAlquiler extends javax.swing.JFrame {
             autoEncontrado = auto;
 
             JOptionPane.showMessageDialog(this,
-                    "✓ Auto encontrado\n"
-                    + "Marca: " + auto.getMarca() + "\n"
+                    """
+                    \u2713 Auto encontrado
+                    Marca: """ + auto.getMarca() + "\n"
                     + "Modelo: " + auto.getModelo() + "\n"
                     + "Tipo: " + auto.getTipo(),
                     "Éxito",
@@ -284,8 +286,10 @@ public class FormnAlquiler extends javax.swing.JFrame {
             arregloAlquileres.agregarAlquiler(alquiler);
 
             JOptionPane.showMessageDialog(this,
-                    "✓ Alquiler registrado exitosamente\n"
-                    + "Cliente: " + nombre + "\n"
+                    """
+                    \u2713 Alquiler registrado exitosamente
+                    Cliente: """ + nombre + "\n"
+                    + "Placa: " + placa + "\n"
                     + "Costo: S/. " + String.format("%.2f", alquiler.getCostoTotal()),
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);

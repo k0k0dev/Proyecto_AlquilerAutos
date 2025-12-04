@@ -4,13 +4,17 @@ import auto.Alquiler;
 
 public class ArregloAlquiler {
 
-    private Alquiler[] alquileres;
+    private final Alquiler[] alquileres;
     private int cantidad;
     private static final int MAXIMO = 100;
 
     public ArregloAlquiler() {
         alquileres = new Alquiler[MAXIMO];
         cantidad = 0;
+    }
+
+    public int getCantidad() {
+        return cantidad;
     }
 
     public boolean agregarAlquiler(Alquiler nuevoAlquiler) {
@@ -26,9 +30,6 @@ public class ArregloAlquiler {
 
     public Alquiler[] obtenerTodos() {
         Alquiler[] lista = new Alquiler[getCantidad()];
-        for (int i = 0; i < getCantidad(); i++) {
-            lista[i] = alquileres[i];
-        }
         return lista;
     }
 
@@ -40,7 +41,4 @@ public class ArregloAlquiler {
         return total;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
 }

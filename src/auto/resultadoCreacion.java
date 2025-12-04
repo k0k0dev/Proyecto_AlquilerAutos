@@ -10,20 +10,38 @@ public class resultadoCreacion {
         this.alquiler = alquiler;
         this.exito = exito;
         this.menError = menError;
-
     }
 
     public Alquiler getAlquiler() {
         return alquiler;
     }
 
+    public void setAlquiler(Alquiler alquiler) {
+        this.alquiler = alquiler;
+    }
+
     public boolean isExito() {
         return exito;
+    }
+
+    public void setExito(boolean exito) {
+        this.exito = exito;
     }
 
     public String getMenError() {
         return menError;
     }
 
-    
+    public void setMenError(String menError) {
+        this.menError = menError;
+    }
+
+    @Override
+    public String toString() {
+        return "resultadoCreacion{"
+                + "alquiler=" + getAlquiler()
+                + ", exito=" + isExito()
+                + ", menError='" + getMenError() + '\''
+                + '}';
+    }
 }

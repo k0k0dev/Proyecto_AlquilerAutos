@@ -14,18 +14,6 @@ public class Auto {
         this.tipo = tipo;
     }
 
-    public int getIncremento() {
-        if (getTipo().equalsIgnoreCase("Sedan")) {
-            return 0;
-        } else if (getTipo().equalsIgnoreCase("Camioneta")) {
-            return 3;
-        } else if (getTipo().equalsIgnoreCase("Minivan")) {
-            return 4;
-        } else {
-            return 0;
-        }
-    }
-
     public String getPlaca() {
         return placa;
     }
@@ -58,4 +46,20 @@ public class Auto {
         this.tipo = tipo;
     }
 
+    public int getIncremento() {
+        if (getTipo().equalsIgnoreCase("Sedan")) {
+            return 0;
+        } else if (getTipo().equalsIgnoreCase("Camioneta")) {
+            return 3;
+        } else if (getTipo().equalsIgnoreCase("Minivan")) {
+            return 4;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Auto{placa='%s', modelo='%s', marca='%s', tipo='%s'}", getPlaca(), getModelo(), getMarca(), getTipo());
+    }
 }

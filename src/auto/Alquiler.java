@@ -1,6 +1,6 @@
 package auto;
 
-public class Alquiler {
+public final class Alquiler {
 
     private String nombreCliente;
     private String placa;
@@ -9,9 +9,6 @@ public class Alquiler {
     private double kmFinal;
     private double costoTotal;
     private static double PRECIO_POR_KM = 1.10;
-
-    public Alquiler() {
-    }
 
     public Alquiler(String nombreCliente, String placa, Auto auto,
             double kmInicial, double kmFinal) {
@@ -23,19 +20,76 @@ public class Alquiler {
         this.costoTotal = calcularCostoTotal();
     }
 
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public Auto getAuto() {
+        return auto;
+    }
+
+    public double getKmInicial() {
+        return kmInicial;
+    }
+
+    public double getKmFinal() {
+        return kmFinal;
+    }
+
+    public double getCostoTotal() {
+        return costoTotal;
+    }
+
+    public static double getPRECIO_POR_KM() {
+        return PRECIO_POR_KM;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public void setAuto(Auto auto) {
+        this.auto = auto;
+    }
+
+    public void setKmInicial(double kmInicial) {
+        this.kmInicial = kmInicial;
+    }
+
+    public void setKmFinal(double kmFinal) {
+        this.kmFinal = kmFinal;
+    }
+
+    public void setCostoTotal(double costoTotal) {
+        this.costoTotal = costoTotal;
+    }
+
+    public static void setPRECIO_POR_KM(double aPRECIO_POR_KM) {
+        PRECIO_POR_KM = aPRECIO_POR_KM;
+    }
+
+    public double calcularCostoTotal() {
+        double kmRecorridos = getKmFinal() - getKmInicial();
+        double costoBase = kmRecorridos * getPRECIO_POR_KM();
+        int incremento = getAuto().getIncremento();
+        double montoIncremento = costoBase * (incremento / 100.0);
+        setCostoTotal(costoBase + montoIncremento);
+        return getCostoTotal();
+    }
+
     public static resultadoCreacion crearAlquilerValido(String nombreCliente, String placa, Auto auto, String kmInicialStr,
             String kmFinalStr) {
 
         if (nombreCliente == null || nombreCliente.trim().isEmpty()) {
             return new resultadoCreacion(null, false, "El nombre del cliente no puede estar vacío");
-        }
-
-        if (placa == null || placa.trim().isEmpty()) {
-            return new resultadoCreacion(null, false, "La placa no puede estar vacía");
-        }
-
-        if (auto == null) {
-            return new resultadoCreacion(null, false, "Debe seleccionar un auto");
         }
 
         String errorKmInicial = validarNumero(kmInicialStr, "KM Inicial");
@@ -67,7 +121,7 @@ public class Alquiler {
     }
 
     private static String validarNumero(String valor, String campo) {
-        // Validar nulo o vacío
+
         if (valor == null || valor.trim().isEmpty()) {
             return campo + " no puede estar vacío";
         }
@@ -86,7 +140,6 @@ public class Alquiler {
             char c = valor.charAt(i);
 
             if (i == 0 && (c == '-' || c == '+')) {
-                continue;
             } else if (c == '.') {
                 if (tienePunto) {
                     return campo + " no puede tener múltiples puntos decimales";
@@ -109,70 +162,4 @@ public class Alquiler {
     public static boolean esNumeroValido(String valor) {
         return validarNumero(valor, "") == null;
     }
-
-    public double calcularCostoTotal() {
-        double kmRecorridos = getKmFinal() - getKmInicial();
-        double costoBase = kmRecorridos * getPRECIO_POR_KM();
-        int incremento = getAuto().getIncremento();
-        double montoIncremento = costoBase * (incremento / 100.0);
-        setCostoTotal(costoBase + montoIncremento);
-        return getCostoTotal();
-    }
-
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public Auto getAuto() {
-        return auto;
-    }
-
-    public void setAuto(Auto auto) {
-        this.auto = auto;
-    }
-
-    public double getKmInicial() {
-        return kmInicial;
-    }
-
-    public void setKmInicial(double kmInicial) {
-        this.kmInicial = kmInicial;
-    }
-
-    public double getKmFinal() {
-        return kmFinal;
-    }
-
-    public void setKmFinal(double kmFinal) {
-        this.kmFinal = kmFinal;
-    }
-
-    public double getCostoTotal() {
-        return costoTotal;
-    }
-
-    public void setCostoTotal(double costoTotal) {
-        this.costoTotal = costoTotal;
-    }
-
-    public static double getPRECIO_POR_KM() {
-        return PRECIO_POR_KM;
-    }
-
-    public static void setPRECIO_POR_KM(double aPRECIO_POR_KM) {
-        PRECIO_POR_KM = aPRECIO_POR_KM;
-    }
-
 }
