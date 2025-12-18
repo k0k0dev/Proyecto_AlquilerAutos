@@ -80,8 +80,7 @@ Fácil de usar y ordenada en formularios separados.
 ✍️ Autores
 
 
-Rivasplata Plácido, Andrea Alexandra       U24225497 
 Malpartida Acevedo, Jorge Luis             U24244716 
-Herrera Gutierrez, Camila Luna             U23300100
+
 
 
